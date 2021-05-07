@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.wrapper{
+	position: relative;
+	margin: 0 auto;
+
+	.wf-item{
+		position: absolute;
+		background-color: #ededed;
+		overflow: hidden;
+
+		img{
+			display: block;
+			width: 100%;
+			opacity: 0;
+			transition: opacity 1s;
+		}
+	}
+
+	.wf-item:hover{
+		box-shadow: 3px 5px 10px #999;
+	}
+}
