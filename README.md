@@ -14,7 +14,7 @@ let wf = WaterFall.create({
   width: 300, // the picture's width, default value is 232
   gap: 20, // the gap between two pictures, default value is 10
   cols: 4 // colums, default value is 5
-  unit: 'px' // unit, default value is 'px'
+  unit: 'px' // unit, default value is 'px', only support 'px' and 'rem'
   lazy: false // Indicates whether the image is lazy to load, default valut is false
 })
 

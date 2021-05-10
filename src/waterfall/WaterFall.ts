@@ -14,6 +14,7 @@ class WaterFall{
   _n: number // 当前img的数量
   _flag: boolean // 是否懒加载
   _url: string // 懒加载图片的地址
+  _fontSize: number
 
   constructor(config: Config){
     // 初始化
@@ -25,6 +26,7 @@ class WaterFall{
     this._n = 0
     this._flag = false
     this._url = LAZY_LOAD_URL
+    this._fontSize = 16
     try{
       this._config = this._initConfig(config)
       this._isPass && this._render()
@@ -88,7 +90,8 @@ class WaterFall{
   // 渲染页面，添加wrapper容器
   _render(): void{
     const { el, width, gap, cols, unit } = this._config
-
+    const html = document.getElementsByTagName('html')[0]
+    this._fontSize = parseFloat(window.getComputedStyle(html, null).getPropertyValue('font-size'))
     this._dom = document.getElementById(el)!
     // 外层包裹容器
     let wrapper = document.createElement('div')
@@ -183,13 +186,20 @@ class WaterFall{
       // 保存第一行图片的位置信息，用来后面的图片定位使用
       this._heightArr.push(oItem.offsetHeight)
       this._leftArr.push(itemLeft)
+      console.log(oItem.offsetHeight)
     } else{
       // 拿到高度最小的列，将图片插入到下面
       this._minIndex = this._getMinIndex(this._heightArr)
-      oItem.style.top = (this._heightArr[this._minIndex] + gap!) + unit!
-      oItem.style.left = this._leftArr[this._minIndex] + unit!
-      // 由于插入了一张图片，要更新当前列的高度
-      this._heightArr[this._minIndex] += (oItem.offsetHeight + gap!)
+      if(this._config.unit === 'rem'){
+        oItem.style.top = (this._heightArr[this._minIndex]/this._fontSize + gap!) + unit!
+        oItem.style.left = this._leftArr[this._minIndex] + unit!
+        this._heightArr[this._minIndex] += (oItem.offsetHeight + gap!*this._fontSize)
+      }else{
+        oItem.style.top = (this._heightArr[this._minIndex] + gap!) + unit!
+        oItem.style.left = this._leftArr[this._minIndex] + unit!
+        // 由于插入了一张图片，要更新当前列的高度
+        this._heightArr[this._minIndex] += (oItem.offsetHeight + gap!)
+      }
     }
   }
 
