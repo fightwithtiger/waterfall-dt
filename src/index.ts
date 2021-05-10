@@ -1,13 +1,7 @@
-import './index.less'
-import WaterFall from './WaterFall'
+import './style/index.less'
+import WaterFall from './waterfall/WaterFall'
 
-type Config = {
-  el: string,
-  width?: number,
-  gap?: number,
-  cols?: number,
-  unit?: string
-}
+import { Config } from './types/index'
 
 export function create(config: Config): WaterFall{
   let wf = new WaterFall(config)

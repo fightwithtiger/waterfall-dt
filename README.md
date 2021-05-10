@@ -1,29 +1,46 @@
 # GetStart
-安装：npm install waterfall-dt
+## step1 install it
+`npm install waterfall-dt`
 
-使用
-```
-html创建元素节点节点：<div id="wf"></div>
+## step2 how to use
+first, you need to create a HTMLElemnt or select one that already have in your web page, for example: 
+`<div id="wf"></div>`
 
-引入
+second, you need to require the module you just install before and then you can easily use it, just like the following:
+```JavaScript
 const WaterFall = require('waterfall-dt');
 let wf = WaterFall.create({
-  el: 'wf', // 绑定的html元素节点id，必传
-  width: 300, // 需要显示图片宽度，可不传，默认为232
-  gap: 20, // 图片之间间隙，可不传，默认为10
-  cols: 4 // 图片排几列，可不传，默认为5
-  unit: 'px' // 单位，可不传，默认为px
+  el: 'wf', // The container's id, must have
+  width: 300, // the picture's width, default value is 232
+  gap: 20, // the gap between two pictures, default value is 10
+  cols: 4 // colums, default value is 5
+  unit: 'px' // unit, default value is 'px'
+  lazy: false // Indicates whether the image is lazy to load, default valut is false
 })
 
+// you need the imgs'format like this:
 const imgs = [
   {"img":"../img/1.jpg","width":2560,"height":1600},
 {"img":"../img/2.jpg","width":1366,"height":768},
 {"img":"../img/3.jpg","width":1920,"height":1080},
 {"img":"../img/4.jpg","width":1600,"height":2840}]
 
-wf.append(imgs) // 插入图片，瀑布流显示
+wf.append(imgs) // to show waterfall images
 ```
 
-# 注意事项
-注意请在用create方法创建wf实例时，保持传入参数格式的一致。imgs是一个图片列表，需要按上述形式传入
-如有问题请发送邮件到2284925818@qq.com
+## more about lazyload
+If you want to use custom lazy-loaded transition images or svgs, you can rewrite lazy to an object with the use parameter set to true and the URL parameter set to the address of the custom image, Here's an example:
+```JavaScript
+let wf = create({
+  el: 'wf',
+  lazy: {
+    use: true,
+    url: 'https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2955301104,3476101192&fm=26&gp=0.jpg'
+  }
+})
+```
+
+# Notice
+Notice that when creating a wf instance using the create method, keep the format of the incoming parameters consistent. imgs is a list of images that need to be passed in as described above
+
+If you have questions, please send an email to 2284925818@qq.com

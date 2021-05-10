@@ -1,11 +1,11 @@
 {
   "name": "waterfall-dt",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./dist/main.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack serve --open chrome.exe"
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js --open chrome.exe"
   },
   "keywords": [],
   "author": "dengtuo",
