@@ -11,7 +11,7 @@ const CONFIG_ERROR_INFO = `TypeError: new WaterFall().create() needs a Object, i
 
 const DOM_NOT_FOUND_INFO = 'the element\'s id is not exist, please check out it again!'
 
-const LAZY_LOAD_URL = '../assets/loading-bubbles.svg'
+const LAZY_LOAD_URL = 'http://www.jinwanlaohu.club/assets/svg/loading-bubbles.svg'
 
 export {
   CONFIG_ERROR_INFO,

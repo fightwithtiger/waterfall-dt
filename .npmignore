@@ -1,6 +1,13 @@
 .DS_Store
 node_modules
-/dist
+/assets
+/resources
+/mock
+/public
+/src
+/tsconfig.json
+/webpack.dev.js
+/webpack.prod.js
 
 # local env files
 .env.local
