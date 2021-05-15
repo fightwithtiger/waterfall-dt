@@ -1,4 +1,4 @@
-import { Config, ImgObj, lazyObj } from '../types/index'
+import { Config, ImgObj } from '../types/index'
 import { LAZY_LOAD_URL } from '../const/index'
 import { validateConfig } from '../uitls/validate'
 

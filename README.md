@@ -8,6 +8,7 @@ first, you need to create a HTMLElemnt or select one that already have in your w
 
 second, you need to require the module you just install before and then you can easily use it, just like the following:
 ```JavaScript
+//commonJS
 const WaterFall = require('waterfall-dt');
 let wf = WaterFall.create({
   el: 'wf', // The container's id, must have
@@ -17,6 +18,17 @@ let wf = WaterFall.create({
   unit: 'px' // unit, default value is 'px', only support 'px' and 'rem'
   lazy: false // Indicates whether the image is lazy to load, default valut is false
 })
+
+// or es6
+// import { create } from 'waterfall-dt'
+// let wf = create({
+//   el: 'wf', // The container's id, must have
+//   width: 300, // the picture's width, default value is 232
+//   gap: 20, // the gap between two pictures, default value is 10
+//   cols: 4 // colums, default value is 5
+//   unit: 'px' // unit, default value is 'px', only support 'px' and 'rem'
+//   lazy: false // Indicates whether the image is lazy to load, default valut is false
+// })
 
 // you need the imgs'format like this:
 const imgs = [
@@ -31,7 +43,8 @@ wf.append(imgs) // to show waterfall images
 ## more about lazyload
 If you want to use custom lazy-loaded transition images or svgs, you can rewrite lazy to an object with the use parameter set to true and the URL parameter set to the address of the custom image, Here's an example:
 ```JavaScript
-let wf = create({
+const WaterFall = require('waterfall-dt');
+let wf = WaterFall.create({
   el: 'wf',
   lazy: {
     use: true,

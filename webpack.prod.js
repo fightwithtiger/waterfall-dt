@@ -18,11 +18,16 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         // 打包后文件的文件
         filename: "[name].js",
+        library: 'WaterFall',
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
 
-        library: {
-            name: 'WaterFall',
-            type: 'umd',
-        },
+        // library: {
+        //     name: 'WaterFall',
+        //     type: 'umd',
+        //     umdNamedDefine: true,
+        // },
+        
 
         // 告诉webpack不使用箭头
         environment:{
@@ -48,6 +53,7 @@ module.exports = {
                          loader:"babel-loader",
                          // 设置babel
                          options: {
+                            sourceType: "unambiguous",
                              // 设置预定义的环境
                              presets:[
                                  [
